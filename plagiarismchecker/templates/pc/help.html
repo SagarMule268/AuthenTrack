@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Report</title>
+    <link href="{% static 'pc/newStyle.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="main-content">   
+        {% include 'pc/header.html' %} 
+
+        <div class="new-section">
+            <div class="side-img">
+                <img src="{% static 'pc/images/help.jpg'  %}" alt="">
+            </div>
+            <div class="side-content-contact">
+            <h2>Get Involved</h2>
+            <p>Join us in making a difference! Here are some ways you can contribute:</p>
+            <ul>
+                <li>Volunteer: Help us at events or provide support to users.</li>
+                <li>Donate: Your donations help improve our services.</li>
+                <li>Collaborate: Partner with us to bring new opportunities to life.</li>
+            </ul>
+            <div class="cta-container">
+                <a href="/">    <button class="cta-button">Home </button></a>
+                <a href="/contactus">     <button class="cta-button">Learn More</button></a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Plagiarism Report
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

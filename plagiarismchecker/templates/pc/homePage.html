@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Report</title>
+    <link href="{% static 'pc/newStyle.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="main-content">   
+        {% include 'pc/header.html' %} 
+
+        <div class="card-container">
+            <div class="card">
+                <img src="{%static 'pc/images/text-image.avif'  %}" alt="Image 1">
+               <div class="card-content">
+                <a href="/textUpload"><h3> Text Plagiarism ></h3></a>
+                <p>Check text for Plagiarism</p>
+               </div>
+            </div> 
+            <div class="card">
+                <img src="{%static 'pc/images/documet.png'  %}" alt="Image 2">
+               <div class="card-content">
+                <a href="/documentUpload"> <h3>Document Plagiarism ></h3> </a>
+                <p>Check documents for Plagiarism</p>
+               </div>
+            </div>
+            <div class="card">
+                <img src="{%static 'pc/images/text-compare.png'  %}" alt="Image 3">
+                <div class="card-content">
+                    <a href="/comparetextCheck"> <h3>Compare Text ></h3> </a>
+                    <p>Compare text of two documents</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{%static 'pc/images/document-compare.png'  %}" alt="Image 3">
+                <div class="card-content">
+                    <a href="/comparefilecheck"> <h3>Compare Document ></h3> </a>
+                    <p>Compare documents</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{%static 'pc/images/contact-us.png'  %}" alt="Image 3">
+                <div class="card-content">
+                    <a href="/contactus"> <h3>Contact Us ></h3> </a>
+                    <p>Need any help feel free to contact</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{%static 'pc/images/help-image.png'  %}" alt="Image 3">
+                <div class="card-content">
+                    <a href="/help"> <h3>Help ></h3> </a>
+                    <p>Need any help</p>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2024 Plagiarism Report
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

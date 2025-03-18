@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Report Form</title>
+    <link href="{% static 'pc/newStyle.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+    <!-- Side Navigation -->
+     
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header with Image -->
+        {% include 'pc/header.html' %} 
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <h2>Submit Your Report</h2>
+
+            <form id="form1-ws" action="/filetest/" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+   
+                <div class="form-group">
+                    <label for="evidence">Upload Evidence (e.g., Document, URL)</label>
+                    <input type="file"  id="id_docfile" required type="file" name="docfile" accept=".pdf">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" form="form1-ws" id="submit-button-1" class="btn">Run Search</button>
+                </div>
+            </form>
+
+            {% if link %}
+            <div class="result-div">
+                <h1>Results</h1>
+                <div class="row">
+                    <!-- Left Column for Links -->
+                    <div class="col-md-6 result-1">
+                        <ul class="output-list-1">
+                            {% for links in link %}
+                            <li><a href="{{ links }}" target="_blank">{{ links }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Right Column for Plagiarism Percentage -->
+                    <div class="col-md-6 result-2" style="text-align: center;">
+                        <p class="output-per-tot">{{ percent }}%</p>
+                        <p>Plagiarized</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Footer -->
+	 
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript"
+	  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript"
+	  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>
