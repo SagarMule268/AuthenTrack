@@ -6,6 +6,9 @@ from plagiarismchecker.algorithm import fileSimilarity
 import PyPDF2 
 
 # Create your views here.
+#side menu
+def sideMenu(request):
+    return render(request, 'pc/landingPage.html')
 #home
 def home(request):
     return render(request, 'pc/homePage.html')
@@ -20,7 +23,7 @@ def test(request):
         percent,link = main.findSimilarity(request.POST['q'])
         percent = round(percent,2)
     print("Output.....................!!!!!!!!",percent,link)
-    return render(request, 'pc/textUpload.html',{'link': link, 'percent': percent})
+    return render(request, 'pc/textUpload.html',{'link': link, 'percent': percent , "text": request.POST['q']})
 
 #web search file(.txt, .docx)
 def filetest(request):
@@ -73,7 +76,7 @@ def twofiletest1(request):
         result = fileSimilarity.findFileSimilarity(request.POST['q1'],request.POST['q2'])
     result = round(result,2)    
     print("Output>>>>>>>>>>>>>>>>>>>>!!!!!!!!",result)
-    return render(request, 'pc/comparetextCheck.html',{'result': result})
+    return render(request, 'pc/comparetextCheck.html',{'result': result ,"text1": request.POST['q1'], "text2": request.POST['q2']})
     
 
 #two text compare(.txt, .docx)

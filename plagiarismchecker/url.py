@@ -14,8 +14,8 @@ urlpatterns = [
     path('comparefilecheck/', views.comparefilecheck,name='comparefilecheck'),
     path('help/', views.helpus, name='helpus'),
     path('contactus/', views.contactus, name='contactus'),
-    
-
+    path('menu/', views.sideMenu, name='sideMenu'),
+   
 
 
 

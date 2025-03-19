@@ -6,10 +6,10 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    display: flex;
+  
     height: 100vh;
     background-color: #f5f4f4;
-    flex-direction: column; /* Adjust flex-direction since no side nav */
+    /* Adjust flex-direction since no side nav */
 }
 
 /* Main Content */
@@ -17,6 +17,8 @@ body {
     padding: 20px;
     width: 100%;
     flex-grow: 1;
+    display: flex;
+  
 }
 
 /* Header Section with Image */
@@ -28,7 +30,7 @@ body {
     color: rgb(122, 199, 247);
     padding: 60px 20px;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin:10px 10px 30px;
 }
 
 .header h1 {
@@ -48,8 +50,7 @@ body {
 
 /* Card Container */
 .form-container {
-    max-width: 700px;
-  
+    width: 700px;
     background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
@@ -90,7 +91,8 @@ body {
 
 /* Submit Button */
 .form-group button {
-    background-color: #007bff;
+    /* background-color: #007bff; */
+   background-color:  rgb(122, 199, 247);
     color: white;
     border: none;
     padding: 12px 25px;
@@ -98,6 +100,7 @@ body {
     cursor: pointer;
     border-radius: 8px;
     width: 100%;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .form-group button:hover {
@@ -222,8 +225,10 @@ footer {
 .result-div {
     background-color: #fff;
     padding: 30px;
-    margin-top: 30px;
+    margin-left: 10px;
     border-radius: 10px;
+    width: 50%;
+   
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -235,10 +240,12 @@ footer {
 .output-list-1 {
     list-style-type: none;
     padding-left: 0;
+    
 }
 
 .output-list-1 li {
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .output-per-tot {
@@ -320,3 +327,39 @@ footer {
         padding: 20px 10px; /* Even smaller padding on very small screens */
     }
 }
+
+
+
+/*  collapseable menu style css  */.vertical-menu {
+    width: 200px;
+    background: #333;
+    list-style: none;
+    padding: 0;
+}
+
+.vertical-menu li {
+    border-bottom: 1px solid #555;
+}
+
+.vertical-menu li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.vertical-menu li a:hover {
+    background: #555;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+
+
+

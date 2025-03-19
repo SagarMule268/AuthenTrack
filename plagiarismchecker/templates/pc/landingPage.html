@@ -1,0 +1,249 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuthenTrack</title>
+    <link href="{% static 'pc/newStyle.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+      
+        .main-landing{
+           /* background-color: aliceblue; */
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .sub-landing{
+            
+            height: 50vh;
+            width: 50vw;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            padding:50px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .sub-landing h1{
+            font-size: 4rem;
+        }
+        .sub-landing button{
+            margin-top: 20px;
+            padding: 20px;
+            width: 300px;
+           border-radius: 30px;
+           background: rgb(122, 199, 247);
+           border: none;
+           font-weight: bold;
+           font-size: large;
+           transition: background .3s ease-in-out;
+        }
+        .sub-landing button:hover{
+            background: rgb(93, 185, 242);
+           
+        }
+        .navbar{
+            border-bottom:1px solid rgb(44, 39, 39) ;
+            border-radius: 20px;
+           background: url("{% static 'pc/images/header.avif' %}");
+           background-position: left;
+        }
+        .navbar-brand{
+            font-size: 30px;
+            font-weight: bold;
+           transition: color .3s ease-in-out;
+        }
+        .navbar-brand:hover{
+            color: rgb(122, 199, 247);
+        }
+      
+        .services{
+            margin-bottom: 30px;   
+            height: 50vh; 
+                
+        }
+        .col-md-4 img{
+            width: 20%;
+           
+            border-radius: 50%;
+           
+        }
+        .working .col-md-4 img{
+            width:10%;
+            background-color: white;
+            border-radius: 0 !important;
+        }
+        .working{
+            padding-top: 20px;
+            background-color: aliceblue;
+        }
+       .row{
+        padding: 10px;
+       }
+        
+       .footer{
+        background-color:rgba(0, 0, 0, 0.908);
+        
+       }
+       .footer h5{
+        color: rgba(255, 255, 255, 0.867);
+       }
+       .contact ul{
+        list-style: none;
+       }
+       
+       .contact a{
+        color:rgba(180, 171, 171, 0.867);
+        text-decoration: none
+    }
+    .contact li , .footer p{
+        color:rgba(180, 171, 171, 0.867);
+
+    }
+    .contact a:hover{
+        color: blue;
+    }
+        .contact span{
+            font-weight: bold;
+            margin-left: 5px;
+            color:rgba(180, 171, 171, 0.867);
+
+        }
+       
+       .copy-section{
+        background-color: rgb(86, 135, 234);
+       }
+    </style>
+</head>
+<body>
+   
+    <div class="container-fluid main-landing" >
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand text-primary-emphasis " href="#" style="font-family:sofia;" >AuthenTracK</a>
+            </div>
+            
+        </nav>
+        <div class="container sub-landing">
+            <h1 class="text-primary-emphasis ">AuthenTracK</h1>
+            <p>Your Reliable Plagiarism Detection Solution</p>
+            <button onclick="location.href='/' "> Get Started </button>
+        </div>
+        <div class="container content-landing">
+            <div class="row">
+                <div class="col-md-5 col-lg-5 d-flex justify-content-center align-items-center flex-column">
+                    <h1>Get fast, actionable results</h1>
+                    <p>AuthenTracK is a powerful plagiarism detection tool that helps you find and eliminate 
+                        duplicate content. Our plagiarism checker is designed to help you achieve 
+                        the best results in your academic writing.</p>
+                </div>
+                <div class="col-md-7 col-lg-7">
+                   <img src="{% static 'pc/images/landing2.svg' %}" alt="landing page image">
+                </div>
+            </div>
+            
+        </div>
+
+        <div class=" container services">
+            <div class="row ">
+                <div class="col-md-4 border-start border-success border-3"> 
+                    <img src="{% static 'pc/images/detailed.jpg' %}" alt="">
+                    <h4 class="mb-3">Detailed</h4>
+                    <p class="text-secondary-emphasis">Get in-depth analysis of any potential plagiarism</p>
+                </div>
+                <div class="col-md-4 border-start border-warning border-3">
+                    <img src="{% static 'pc/images/secure.avif' %}" alt="">
+                    <h4 class="mb-3">Secure</h4>
+                    <p class="text-secondary-emphasis">Your data is protected with industry-leading security measures.</p>
+                </div>
+                <div class="col-md-4 border-start border-primary border-3 ">
+                    <img src="{% static 'pc/images/accurate.jpg' %}" alt="">
+                    <h4 class="mb-3">Accurate</h4>
+                    <p class="text-secondary-emphasis">Feel confident that your results are trustworthy</p>
+                </div>
+            </div>
+        </div>
+
+        <div class=" container working">
+            <h2 class="text-center mb-5">Who can use <span class="text-primary-emphasis">AuthenTracK</span> ? </h2>
+            <div class="row mb-5">
+                <div class="col-md-4"> 
+                    <img src="{% static 'pc/images/working.svg' %}" alt="">
+                    <h4 class="mb-3" >Working professionals</h4>
+                    <p class="text-secondary-emphasis">Ensure the authenticity of reports, briefs, memos, and other business documents.</p>
+                </div>
+                <div class="col-md-4 ">
+                    <img src="{% static 'pc/images/acadmics.svg' %}" alt="">
+                    <h4 class="mb-3">Academics</h4>
+                    <p class="text-secondary-emphasis">Uphold academic integrity in essays, papers, and other written works.</p>
+                </div>
+                <div class="col-md-4 ">
+                    <img src="{% static 'pc/images/creators.svg' %}" alt="">
+                    <h4 class="mb-3">Creators</h4>
+                    <p class="text-secondary-emphasis">Maintain ethical writing standards in personal projects and content creation.</p>
+                </div>
+            </div>
+            <div class="row mb-5 ">
+                <div class="col-md-4 "> 
+                    <img src="{% static 'pc/images/journalist.svg' %}" alt="">
+                    <h4 class="mb-3" >Journalists</h4>
+                    <p class="text-secondary-emphasis">Ensure journalistic integrity by verifying the originality of your articles.</p>
+                </div>
+                <div class="col-md-4 ">
+                    <img src="{% static 'pc/images/edit.svg' %}" alt="">
+                    <h4 class="mb-3">Professional writers</h4>
+                    <p class="text-secondary-emphasis">Expert writers delivering high-quality, original content.</p>
+                </div>
+                <div class="col-md-4 serv-style ">
+                    <img src="{% static 'pc/images/description.svg' %}" alt="">
+                    <h4 class="mb-3">Legal professionals</h4>
+                    <p class="text-secondary-emphasis">Experienced legal professionals ensuring accuracy and compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class=" container footer">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 text-center">
+                    <h3 class="text-primary-emphasis">AuthenTracK</h3>
+                    <p>Your Reliable Plagiarism Detection Solution</p>
+                </div>
+                <div class="col-md-4 col-lg-4 contact">
+                    <h5 class="text-center">Useful Links</h5>
+                    <ul class="text-center " >
+                      <li>  <a href="/">    Home </a></li>
+                
+                <li><a href="/contactus">   Learn More</a></li>
+                    </ul>
+                   
+                </div>
+                <div class="col-md-4 col-lg-4 contact">
+                    <h5 class="text-center">Contact Us</h5>
+                    <ul class="text-center " >
+                        <li > <span>Phone :</span> +91 898555525</li>
+                        <li><span>Email:</span>  plag@gmail.cm</li>
+                    </ul>
+                   
+                </div>
+            </div>
+            <div class="row copy-section">
+                <div class="col-12">
+                    <p class="text-center">copyrights &copy; 2025</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

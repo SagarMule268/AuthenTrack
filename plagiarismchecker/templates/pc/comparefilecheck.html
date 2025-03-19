@@ -13,11 +13,12 @@
 
     <!-- Side Navigation -->
      
+    {% include 'pc/header.html' %} 
+    {% include 'pc/collapse.html' %}
 
     <!-- Main Content -->
     <div class="main-content">
         <!-- Header with Image -->
-        {% include 'pc/header.html' %} 
 
         <!-- Form Container -->
         <div class="form-container">
@@ -40,23 +41,28 @@
                 </div>
             </form>
 
+           
+           
+           
+        </div>
+        <div class="result-div">
+            <h3>Results</h3>
             {% if result %}
-            <div class="result-div">
-                <h1>Results</h1>
-                <div class="row">
-                    <!-- Left Column for Links -->
+            <div class="row">
+                <!-- Left Column for Links -->
 
 
-                    <!-- Right Column for Plagiarism Percentage -->
-                    <div class="col-md-6 result-2" style="text-align: center;">
-                        <p class="output-per-tot">{{ result }}%</p>
-                        <p>Similiarity</p>
-                    </div>
+                <!-- Right Column for Plagiarism Percentage -->
+                <div class="col-md-6 result-2" style="text-align: center;">
+                    <p class="output-per-tot">{{ result }}%</p>
+                    <p>Similiarity</p>
                 </div>
             </div>
             {% endif %}
         </div>
+       
     </div>
+    {% include 'pc/footer.html' %} 
     <!-- Footer -->
 	 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>

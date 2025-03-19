@@ -14,12 +14,15 @@
     <!-- Side Navigation -->
 
     <!-- Main Content -->
+    <div class="header">
+        <h1>Plagiarism Report Form</h1>
+        <p>Fill out the form below to report plagiarism or suspicious content.</p>
+    </div>
+    {% include 'pc/collapse.html' %}
+
     <div class="main-content">
         <!-- Header with Image -->
-        <div class="header">
-            <h1>Plagiarism Report Form</h1>
-            <p>Fill out the form below to report plagiarism or suspicious content.</p>
-        </div>
+       
 
         <!-- Form Container -->
         <div class="form-container">
@@ -30,7 +33,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="plagiarism-description">Describe the suspected plagiarism</label>
-                    <textarea id="text-1" name="q" required></textarea>
+                    <textarea id="text-1" name="q" required>{% if text %} {{text}} {% endif %}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -39,29 +42,34 @@
             </form>
 
             <!-- Results Section (Conditionally displayed) -->
-            {% if link %}
-            <div class="result-div">
-                <h3>Results</h3>
-                <div class="row">
-                    <!-- Left Column for Links -->
-                    <div class="col-md-6 result-1">
-                        <ul class="output-list-1">
-                            {% for links in link %}
-                            <li><a href="{{ links }}" target="_blank">{{ links }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+           
+        </div>
 
-                    <!-- Right Column for Plagiarism Percentage -->
-                    <div class="col-md-6 result-2" style="text-align: center;">
-                        <p class="output-per-tot">{{ percent }}%</p>
-                        <p>Plagiarized</p>
-                    </div>
+       
+        <div class="result-div">
+            <h3>Results</h3>
+            {% if link %}
+            <div class="row">
+                <!-- Left Column for Links -->
+                <div class="result-1">
+                    <ul class="output-list-1">
+                        {% for links in link %}
+                        <li><a href="{{ links }}" target="_blank">{{ links }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Right Column for Plagiarism Percentage -->
+                <div class="result-2" style="text-align: center;">
+                    <p class="output-per-tot">{{ percent }}%</p>
+                    <p>Plagiarized</p>
                 </div>
             </div>
             {% endif %}
         </div>
+       
     </div>
+    {% include 'pc/footer.html' %} 
 
     <!-- Footer -->
     <!-- <footer>
