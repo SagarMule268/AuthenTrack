@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib import messages
 from django.http import HttpResponse
 from plagiarismchecker.algorithm import main
 from docx import *
@@ -85,24 +86,53 @@ def twofiletest1(request):
 
 #two text compare(.txt, .docx)
 def twofilecompare1(request):
+    file1 = request.FILES['docfile1']
+    file2 = request.FILES['docfile2']
+
+    ext1 = request.FILES['docfile1'].name.split('.')[-1].lower()
+    ext2 = request.FILES['docfile2'].name.split('.')[-1].lower()
+
+    # Check if both files have the same extension
+    if ext1 != ext2:
+        messages.error(request, "Error: Files must have the same extension.")
+        return redirect(comparefilecheck)
+  
+
     value1 = ''
     value2 = ''
-    if (str(request.FILES['docfile1'])).endswith(".txt") and (str(request.FILES['docfile2'])).endswith(".txt"):
-        value1 = str(request.FILES['docfile1'].read())
-        value2 = str(request.FILES['docfile2'].read())
 
-    elif (str(request.FILES['docfile1'])).endswith(".docx") and (str(request.FILES['docfile2'])).endswith(".docx"):
-        document = Document(request.FILES['docfile1'])
-        for para in document.paragraphs:
-            value1 += para.text
-        document = Document(request.FILES['docfile2'])
-        for para in document.paragraphs:
-            value2 += para.text
-
-    result = fileSimilarity.findFileSimilarity(value1,value2)
+    # Get uploaded files
     
-    print("Output..................!!!!!!!!",result)
-    return render(request, 'pc/comparefilecheck.html',{'result': result})
+
+    # Process TXT files
+    if ext1 == "txt" and ext2=="txt":
+        value1 = file1.read().decode('utf-8', errors='ignore')  # Decode to string
+        value2 = file2.read().decode('utf-8', errors='ignore')
+
+    # Process DOCX files
+    elif ext1 == "docx" and ext2=="docx":
+        doc1 = Document(file1)
+        doc2 = Document(file2)
+        value1 = "\n".join([para.text for para in doc1.paragraphs])
+        value2 = "\n".join([para.text for para in doc2.paragraphs])
+
+    # Process PDF files
+    elif ext1 == "pdf" and ext2=="pdf":
+        def extract_pdf_text(pdf_file):
+            pdf_reader = PyPDF2.PdfReader(pdf_file)
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text() + "\n"
+            return text.strip()
+
+        value1 = extract_pdf_text(file1)
+        value2 = extract_pdf_text(file2)
+
+    # Run similarity check
+    result = fileSimilarity.findFileSimilarity(value1, value2)
+
+    print("Output..................!!!!!!!!", result)
+    return render(request, 'pc/comparefilecheck.html', {'result': result})
 
 # Function to paraphrase text
 def paraphrase_with_synonyms(text):

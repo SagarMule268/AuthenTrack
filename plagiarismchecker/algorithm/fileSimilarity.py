@@ -4,69 +4,44 @@ from nltk.corpus import stopwords
 
 	
 def findFileSimilarity(inputQuery, database):
+    universalSetOfUniqueWords = set()
+    en_stops = set(stopwords.words('english'))
 
-	universalSetOfUniqueWords = []
-	matchPercentage = 0
+    # Convert to lowercase and split into words (removing punctuation)
+    queryWordList = re.sub(r"[^\w\s]", " ", inputQuery.lower()).split()
+    databaseWordList = re.sub(r"[^\w\s]", " ", database.lower()).split()
 
-	lowercaseQuery = inputQuery.lower()
-	en_stops = set(stopwords.words('english'))
+    # Filter out stopwords
+    queryWordList = [word for word in queryWordList if word not in en_stops]
+    databaseWordList = [word for word in databaseWordList if word not in en_stops]
 
-	# Replace punctuation by space and split
-	queryWordList = re.sub("[^\w]", " ", lowercaseQuery).split()
-	# queryWordList = map(str, queryWordList)					#This was causing divide by zero error
+    # Create a unique set of words from both documents
+    universalSetOfUniqueWords.update(queryWordList)
+    universalSetOfUniqueWords.update(databaseWordList)
 
-	for word in queryWordList:
-		if word not in universalSetOfUniqueWords:
-			universalSetOfUniqueWords.append(word)
+    # If no words remain, return 0% similarity to avoid divide-by-zero error
+    if not universalSetOfUniqueWords:
+        return 0.0
 
-	database1 = database.lower()
+    universalSetOfUniqueWords = list(universalSetOfUniqueWords)  # Convert to list
 
-	# Replace punctuation by space and split
-	databaseWordList = re.sub("[^\w]", " ", database1).split()
-	# databaseWordList = map(str, databaseWordList)			#And this also leads to divide by zero error
+    # Term Frequency (TF) Vectors
+    queryTF = [queryWordList.count(word) for word in universalSetOfUniqueWords]
+    databaseTF = [databaseWordList.count(word) for word in universalSetOfUniqueWords]
 
-	for word in databaseWordList:
-		if word not in universalSetOfUniqueWords:
-			universalSetOfUniqueWords.append(word)
+    # Compute Dot Product
+    dotProduct = sum(q * d for q, d in zip(queryTF, databaseTF))
 
-	for word in universalSetOfUniqueWords:
-		if word in en_stops:
-			universalSetOfUniqueWords.remove(word)
+    # Compute Magnitudes
+    queryVectorMagnitude = math.sqrt(sum(q ** 2 for q in queryTF))
+    databaseVectorMagnitude = math.sqrt(sum(d ** 2 for d in databaseTF))
 
-	queryTF = []
-	databaseTF = []
+    # Avoid division by zero
+    if queryVectorMagnitude == 0 or databaseVectorMagnitude == 0:
+        return 0.0
 
-	for word in universalSetOfUniqueWords:
-		queryTfCounter = 0
-		databaseTfCounter = 0
-
-		for word2 in queryWordList:
-			if word == word2:
-				queryTfCounter += 1
-		queryTF.append(queryTfCounter)
-
-		for word2 in databaseWordList:
-			if word == word2:
-				databaseTfCounter += 1
-		databaseTF.append(databaseTfCounter)
-
-	dotProduct = 0
-	for i in range(len(queryTF)):
-		dotProduct += queryTF[i]*databaseTF[i]
-
-	queryVectorMagnitude = 0
-	for i in range(len(queryTF)):
-		queryVectorMagnitude += queryTF[i]**2
-	queryVectorMagnitude = math.sqrt(queryVectorMagnitude)
-
-	databaseVectorMagnitude = 0
-	for i in range(len(databaseTF)):
-		databaseVectorMagnitude += databaseTF[i]**2
-	databaseVectorMagnitude = math.sqrt(databaseVectorMagnitude)
-
-	matchPercentage = (float)(
-		dotProduct / (queryVectorMagnitude * databaseVectorMagnitude))*100
-
+    # Compute Cosine Similarity Percentage
+    matchPercentage =round( (dotProduct / (queryVectorMagnitude * databaseVectorMagnitude)) * 100 ,2 )
 # 	print (universalSetOfUniqueWords)
 # 	print()
 # 	print (databaseWordList)
@@ -75,4 +50,6 @@ def findFileSimilarity(inputQuery, database):
 # 	print (queryTF)
 # 	print (databaseTF)
 
-	return matchPercentage
+    return matchPercentage
+
+	

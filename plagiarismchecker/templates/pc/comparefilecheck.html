@@ -15,11 +15,19 @@
      <div class="container-fluid" style="background-color: black;" >
     {% include 'pc/header.html' %} 
     {% include 'pc/collapse.html' %}
-
+    
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="color: white;background-color: rgb(240, 149, 149);" >
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="color: white;"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
     <!-- Main Content -->
     <div class="main-content">
         <!-- Header with Image -->
-
+        
         <!-- Form Container -->
         <div class="form-container">
             <h2>Submit Your Report</h2>
@@ -65,7 +73,8 @@
     {% include 'pc/footer.html' %} 
 </div>
     <!-- Footer -->
-	 
+   
+    
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<!-- JQuery -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
