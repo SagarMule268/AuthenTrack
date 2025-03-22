@@ -12,7 +12,7 @@
 <body>
 
     <!-- Side Navigation -->
-     
+     <div class="container-fluid" style="background-color: black;" >
     {% include 'pc/header.html' %} 
     {% include 'pc/collapse.html' %}
 
@@ -53,7 +53,7 @@
 
 
                 <!-- Right Column for Plagiarism Percentage -->
-                <div class="col-md-6 result-2" style="text-align: center;">
+                <div class=" result-2" style="text-align: center;">
                     <p class="output-per-tot">{{ result }}%</p>
                     <p>Similiarity</p>
                 </div>
@@ -63,6 +63,7 @@
        
     </div>
     {% include 'pc/footer.html' %} 
+</div>
     <!-- Footer -->
 	 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>

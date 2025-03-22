@@ -3,12 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root {
+    --bs-btn-hover-bg: #266ade !important ;
+   
+}
 body {
     font-family: 'Arial', sans-serif;
   
     height: 100vh;
-    background-color: #f5f4f4;
+    background: #f9f7f7;
     /* Adjust flex-direction since no side nav */
 }
 
@@ -18,6 +21,8 @@ body {
     width: 100%;
     flex-grow: 1;
     display: flex;
+    background: black !important ;
+
   
 }
 
@@ -107,7 +112,9 @@ body {
     background-color: #0056b3;
 }
 
-
+.form-group button:focus-visible{
+    background-color: #0056b3 !important;
+}
 
 /* Card Container */
 .card-container {
@@ -211,6 +218,18 @@ section {
     }
 }
 
+@media(width:768px){
+    .main-content {
+        flex-direction: column;
+    }
+    .result-div{
+        margin-left: 0px !important;
+        margin-top: 10px;
+        border-radius: 10px;
+        width: 100% !important;
+        height: 400px;
+    }
+}
 footer {
     text-align: center;
     padding: 20px;

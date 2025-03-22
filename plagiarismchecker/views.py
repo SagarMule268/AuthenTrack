@@ -4,16 +4,20 @@ from plagiarismchecker.algorithm import main
 from docx import *
 from plagiarismchecker.algorithm import fileSimilarity
 import PyPDF2 
-
+import nltk
+from nltk.corpus import wordnet
 # Create your views here.
 #side menu
-def sideMenu(request):
-    return render(request, 'pc/landingPage.html')
-#home
-def home(request):
-    return render(request, 'pc/homePage.html')
-    # return render(request, 'pc/homePage.html') 
 
+#home
+def mainhome(request):
+    return render(request, 'pc/landingPage.html')
+    # return render(request, 'pc/homePage.html') 
+def home(request):
+    return render(request ,'pc/homePage.html')
+    
+def paraphrase(request):
+    return render(request, 'pc/phraphrase.html') 
 #web search(Text)
 def test(request):
     print("request is welcome test")
@@ -99,6 +103,30 @@ def twofilecompare1(request):
     
     print("Output..................!!!!!!!!",result)
     return render(request, 'pc/comparefilecheck.html',{'result': result})
+
+# Function to paraphrase text
+def paraphrase_with_synonyms(text):
+    words = text.split()
+    new_words = []
+
+    for word in words:
+        synonyms = wordnet.synsets(word)  # Find synonyms
+        if synonyms:
+            new_word = synonyms[0].lemmas()[0].name()  # Pick the first synonym
+            new_words.append(new_word)
+        else:
+            new_words.append(word)
+
+    return ' '.join(new_words)
+
+# handling form submission for pharaphrasing
+def paraphrase_view(request):
+    if request.method == "POST":
+        input_text = request.POST.get("para", "")
+        processed_text =paraphrase_with_synonyms(input_text)  # Replace with actual paraphrasing logic
+        return render(request, "pc/paraphrase.html", {"output": processed_text , "inputText":input_text})
+
+    return render(request, "pc/paraphrase.html")
 
 def documentUpload(request):
     return render(request, 'pc/documentUpload.html')

@@ -12,7 +12,7 @@
 <body>
 
     <!-- Side Navigation -->
-     
+     <div class="container-fluid" style="background-color: black;" >
     {% include 'pc/header.html' %} 
     {% include 'pc/collapse.html' %}
     <!-- Main Content -->
@@ -42,28 +42,27 @@
         </div>
         <div class="result-div">
             <h3>Results</h3>
-            {% if link %}
+            {% if link  %}
             <div class="row">
                 <!-- Left Column for Links -->
-                <div class="col-md-6 result-1">
+                <div class="col-md-12 result-1" style="text-align: center;" >
                     <ul class="output-list-1">
                         {% for links in link %}
                         <li><a href="{{ links }}" target="_blank">{{ links }}</a></li>
                         {% endfor %}
                     </ul>
-                </div>
-
-                <!-- Right Column for Plagiarism Percentage -->
-                <div class="col-md-6 result-2" style="text-align: center;">
                     <p class="output-per-tot">{{ percent }}%</p>
                     <p>Plagiarized</p>
                 </div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    {% include 'pc/footer.html' %} 
 
+               
+            {% endif %}
+            
+            </div>
+        </div>
+        {% include 'pc/footer.html' %} 
+    </div>
+</div>
     <!-- Footer -->
 	 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>

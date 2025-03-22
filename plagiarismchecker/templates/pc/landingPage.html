@@ -14,7 +14,20 @@
             padding: 0;
             box-sizing: border-box;
         }
-      
+        .hero{
+            background: url("{% static 'pc/images/hero.svg' %}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height:100vh;
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            margin-top: 10px;
+            
+        }
         .main-landing{
            /* background-color: aliceblue; */
             height: 100vh;
@@ -24,31 +37,41 @@
         .sub-landing{
             
             height: 50vh;
-            width: 50vw;
+            width: 50%;
             margin-top: 30px;
+            
             border-radius: 10px;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            background-color: rgb(255 255 255 / 55%);
+            box-shadow: 0 0 10px 0 rgb(10 182 198 );
             padding:50px 20px 20px 20px;
             text-align: center;
         }
 
         .sub-landing h1{
             font-size: 4rem;
+            color: rgb(4 4 50) !important;
+        }
+
+        .sub-landing p{
+            color: black;
+            font-weight: 400;
         }
         .sub-landing button{
             margin-top: 20px;
             padding: 20px;
             width: 300px;
            border-radius: 30px;
-           background: rgb(122, 199, 247);
+           background: rgb(4 4 50);
            border: none;
            font-weight: bold;
            font-size: large;
-           transition: background .3s ease-in-out;
+           color: white;
+           transition: background-color .3s ease-in-out;
         }
         .sub-landing button:hover{
-            background: rgb(93, 185, 242);
-           
+            
+            background: rgb(6, 6, 83);
+            font-weight: bold;
         }
         .navbar{
             border-bottom:1px solid rgb(44, 39, 39) ;
@@ -91,7 +114,7 @@
         
        .footer{
         background-color:rgba(0, 0, 0, 0.908);
-        
+        border-radius: 20px;
        }
        .footer h5{
         color: rgba(255, 255, 255, 0.867);
@@ -99,15 +122,18 @@
        .contact ul{
         list-style: none;
        }
-       
+       .footer p{
+        color: rgba(255, 255, 255, 0.715);
+       }
        .contact a{
         color:rgba(180, 171, 171, 0.867);
         text-decoration: none
     }
-    .contact li , .footer p{
+    .contact li {
         color:rgba(180, 171, 171, 0.867);
 
     }
+   
     .contact a:hover{
         color: blue;
     }
@@ -121,22 +147,32 @@
        .copy-section{
         background-color: rgb(86, 135, 234);
        }
+       .copy-section p{
+        color: black;
+        font-weight: 500;
+       }
+
+       @media (min-width: 768px) {
+    .sub-landing h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+}
+
     </style>
 </head>
 <body>
    
     <div class="container-fluid main-landing" >
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container-fluid">
-                <a class="navbar-brand text-primary-emphasis " href="#" style="font-family:sofia;" >AuthenTracK</a>
+        
+        <div class="container-fluid hero">
+            <div class="container sub-landing">
+                <h1 class="text-primary-emphasis ">AuthenTracK</h1>
+                <p>Your Reliable Plagiarism Detection Solution</p>
+                <button onclick="location.href='/home' "> Get Started </button>
             </div>
-            
-        </nav>
-        <div class="container sub-landing">
-            <h1 class="text-primary-emphasis ">AuthenTracK</h1>
-            <p>Your Reliable Plagiarism Detection Solution</p>
-            <button onclick="location.href='/' "> Get Started </button>
         </div>
+        
         <div class="container content-landing">
             <div class="row">
                 <div class="col-md-5 col-lg-5 d-flex justify-content-center align-items-center flex-column">

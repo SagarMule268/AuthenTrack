@@ -12,6 +12,7 @@
 <body>
 
     <!-- Side Navigation -->
+     <div class="container-fluid" style="background-color: black;" >
     <div class="header">
         <h1>Plagiarism Report Form</h1>
         <p>Fill out the form below to report plagiarism or suspicious content.</p>
@@ -32,7 +33,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="plagiarism-description">Describe the suspected #1 plagiarism</label>
-                    <textarea  id="text-in-1" name="q1"  required>{% if text1 %} {{text2}} {% endif %}</textarea>
+                    <textarea  id="text-in-1" name="q1"  required>{% if text1 %} {{text1}} {% endif %}</textarea>
                 </div>
 
                 <div class="form-group">
@@ -58,16 +59,16 @@
              
 
                 <!-- Right Column for Plagiarism Percentage -->
-                <div class="col-md-6 result-2" style="text-align: center;">
-                    <p class="output-per-tot">{{ result }}%</p>
-                    <p>Similiarity</p>
+                <div class="col-md-12 result-2" style="text-align: center;">
+                    <p class="output-per-tot" >{{ result }}%</p>
+                    <p >Similiarity</p>
                 </div>
             </div>
             {% endif %}
         </div>
     </div>
     {% include 'pc/footer.html' %} 
-
+</div>
     <!-- Footer -->
     <!-- <footer>
         <p>&copy; 2024 Plagiarism Checker. All rights reserved.</p>
